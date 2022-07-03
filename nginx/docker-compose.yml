@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+
+   nginx:
+      container_name: nginx
+      image: nginx:latest
+
+      restart: always
+      logging:
+         driver: "json-file"
+         options: 
+            max-file: "5"
+            max-size: 10m
+
+      ports:
+         - "81:80"
+
+      volumes:
+         - ./conf.d:/etc/nginx/conf.d
+         - ./www:/www
